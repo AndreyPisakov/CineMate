@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "CineMate"
 include(":app")
+include(":domain")
+include(":data")

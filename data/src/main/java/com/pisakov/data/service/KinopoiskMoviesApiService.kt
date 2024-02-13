@@ -1,7 +1,7 @@
 package com.pisakov.data.service
 
-import com.pisakov.data.models.KinopoiskMovieDto
-import com.pisakov.data.models.KinopoiskMoviesDto
+import com.pisakov.data.model.KinopoiskMovieDto
+import com.pisakov.data.model.KinopoiskMoviesDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -9,7 +9,7 @@ import retrofit2.http.Query
 internal interface KinopoiskMoviesApiService {
 
     @GET("/v1.4/movie/{id}")
-    suspend fun getMovieById(@Path("id") id: Int) : KinopoiskMovieDto
+    suspend fun getMovieById(@Path("id") id: Int): KinopoiskMovieDto
 
     @GET("/v1.4/movie")
     suspend fun getMoviesWithFilters(
@@ -19,19 +19,19 @@ internal interface KinopoiskMoviesApiService {
         @Query("year") years: List<String>?,
         @Query("rating.kp") rating: List<String>?,
         @Query("genres.name") genres: List<String>?
-    ) : KinopoiskMoviesDto
+    ): KinopoiskMoviesDto
 
     @GET("/v1.4/movie")
     suspend fun getMoviesFromCollection(
-        @Query("page") page: Int,
+        @Query("page") page: Int = 1,
         @Query("limit") limit: Int = 500,
         @Query("lists") collection: List<String>
-    ) : KinopoiskMoviesDto
+    ): KinopoiskMoviesDto
 
     @GET("/v1.4/movie/search")
     suspend fun getMoviesBySearchQuery(
         @Query("page") page: Int,
         @Query("limit") limit: Int = 50,
         @Query("query") searchQuery: String
-    ) : KinopoiskMoviesDto
+    ): KinopoiskMoviesDto
 }

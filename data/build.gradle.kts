@@ -54,6 +54,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+
     implementation(libs.core)
     implementation(libs.appcompat)
 
@@ -63,4 +65,6 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.retrofit.lib)
     implementation(libs.retrofit.gsonConverter)
+
+    implementation(libs.coroutines.core)
 }

@@ -4,3 +4,9 @@ plugins {
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.androidLibrary) apply false
 }
+
+buildscript {
+    dependencies {
+        classpath(libs.google.services)
+    }
+}

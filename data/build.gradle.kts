@@ -2,6 +2,7 @@ import java.util.Properties
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
+    id("com.google.gms.google-services")
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
@@ -67,4 +68,6 @@ dependencies {
     implementation(libs.retrofit.gsonConverter)
 
     implementation(libs.coroutines.core)
+
+    implementation(libs.firebase.database)
 }

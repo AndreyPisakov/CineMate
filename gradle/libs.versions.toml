@@ -1,5 +1,6 @@
 [versions]
 core = "1.12.0"
+googleServices = "4.4.1"
 kotlin = "1.8.10"
 androidGradlePlugin = "8.2.2"
 core-ktx = "1.12.0"
@@ -37,6 +38,8 @@ test-junit5 = "5.9.3"
 test-mockk = "1.13.8"
 test-robolectric = "4.10.3"
 
+firebase-database = "20.3.0"
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
@@ -49,6 +52,7 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 core = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javax-inject"}
 
 #retrofit
@@ -121,3 +125,5 @@ test-junit-vintageEngine = { module = "org.junit.vintage:junit-vintage-engine", 
 
 androidx-splashScreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splash-screen" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+
+firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebase-database" }

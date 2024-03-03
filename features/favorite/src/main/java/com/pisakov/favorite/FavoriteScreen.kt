@@ -5,8 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun FavoriteScreen() {
-    FavoriteScreen(viewModel())
+fun FavoriteScreen(/*favoriteDependencies: FavoriteDependencies*/) {
+    //DaggerFavoriteComponent.factory().create(favoriteDependencies)
+    FavoriteScreen(viewModel<FavoriteViewModel>())
 }
 
 @Composable

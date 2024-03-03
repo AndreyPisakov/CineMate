@@ -1,4 +1,4 @@
-package com.pisakov.cinemate.navigation
+package com.pisakov.navigation
 
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.runtime.Composable
@@ -7,39 +7,50 @@ import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDeepLink
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.pisakov.favorite.FavoriteScreen
-import com.pisakov.main_screen.MainScreen
-import com.pisakov.profile.ProfileScreen
-import com.pisakov.search.SearchScreen
+import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.channels.Channel
 
 @Composable
 fun NavigationHost(
     modifier: Modifier = Modifier,
-    navController: NavHostController
+    startDestination: String,
+    navigationChannel: Channel<NavigationIntent>,
+    composableModels: List<ComposableModel>
 ) {
+    val navController = rememberNavController()
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = Destination.MainScreen.fullRoute
+        startDestination = startDestination,
     ) {
-        composable(destination = Destination.MainScreen) { MainScreen() }
-        composable(destination = Destination.SearchScreen) { SearchScreen() }
-        composable(destination = Destination.FavoriteScreen) { FavoriteScreen() }
-        composable(destination = Destination.ProfileScreen) { ProfileScreen() }
+        composableModels.forEach { composableModel ->
+            composable(
+                destination = composableModel.destination,
+                content = composableModel.content
+            )
+        }
     }
+    SetupNavigation(
+        navigationChannel = navigationChannel,
+        navController = navController
+    )
 }
 
+data class ComposableModel(
+    val destination: String,
+    val content: @Composable AnimatedContentScope.(NavBackStackEntry) -> Unit
+)
+
 fun NavGraphBuilder.composable(
-    destination: Destination,
+    destination: String,
     arguments: List<NamedNavArgument> = emptyList(),
     deepLinks: List<NavDeepLink> = emptyList(),
     content: @Composable AnimatedContentScope.(NavBackStackEntry) -> Unit
 ) {
     composable(
-        route = destination.fullRoute,
+        route = destination,
         arguments = arguments,
         deepLinks = deepLinks,
         content = content

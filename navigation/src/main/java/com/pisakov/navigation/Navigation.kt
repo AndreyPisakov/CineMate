@@ -1,20 +1,20 @@
-package com.pisakov.cinemate.navigation
+package com.pisakov.navigation
 
 import android.app.Activity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
 @Composable
 fun SetupNavigation(
     navigationChannel: Channel<NavigationIntent>,
-    navHostController: NavHostController
+    navController: NavController
 ) {
     val activity = (LocalContext.current as? Activity)
-    LaunchedEffect(activity, navHostController, navigationChannel) {
+    LaunchedEffect(activity, navController, navigationChannel) {
         navigationChannel.receiveAsFlow().collect { intent ->
             if (activity?.isFinishing == true) {
                 return@collect
@@ -22,13 +22,13 @@ fun SetupNavigation(
             when (intent) {
                 is NavigationIntent.NavigateBack -> {
                     if (intent.route != null) {
-                        navHostController.popBackStack(intent.route, intent.inclusive)
+                        navController.popBackStack(intent.route, intent.inclusive)
                     } else {
-                        navHostController.popBackStack()
+                        navController.popBackStack()
                     }
                 }
                 is NavigationIntent.NavigateTo -> {
-                    navHostController.navigate(intent.route) {
+                    navController.navigate(intent.route) {
                         launchSingleTop = intent.isSingleTop
                         intent.popUpToRoute?.let { popUpToRoute ->
                             popUpTo(popUpToRoute) { inclusive = intent.inclusive }

@@ -1,4 +1,4 @@
-package com.pisakov.cinemate.navigation
+package com.pisakov.navigation
 
 
 import kotlinx.coroutines.channels.BufferOverflow

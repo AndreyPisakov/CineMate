@@ -14,7 +14,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.Firebase
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
-import com.pisakov.cinemate.mainScreen.ContainerScreen
+import com.pisakov.cinemate.containerScreen.ContainerScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

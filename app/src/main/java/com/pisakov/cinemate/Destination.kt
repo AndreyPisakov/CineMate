@@ -1,6 +1,8 @@
-package com.pisakov.cinemate.navigation
+package com.pisakov.cinemate
 
-sealed class Destination(protected val route: String, vararg params: String) {
+import com.pisakov.favorite.FavoriteDependencies
+
+sealed class Destination(val route: String, vararg params: String) {
     val fullRoute: String = if (params.isEmpty()) route else {
         val builder = StringBuilder(route)
         params.forEach { builder.append("/{${it}}") }
@@ -15,19 +17,15 @@ sealed class Destination(protected val route: String, vararg params: String) {
 
     object SearchScreen : NoArgumentsDestination("search")
 
-    object FavoriteScreen : NoArgumentsDestination("favorite")
+    object FavoriteScreen : Destination("favorite", "favoriteDependencies") {
+        const val FAVORITE_DESTINATION = "favoriteDependencies"
+
+        operator fun invoke(favoriteDependencies: FavoriteDependencies): String = route.appendParams(
+            FAVORITE_DESTINATION to favoriteDependencies
+        )
+    }
 
     object ProfileScreen : NoArgumentsDestination("profile")
-
-//    object UserDetailsScreen : Destination("user_details", "firstName", "lastName") {
-//        const val FIST_NAME_KEY = "firstName"
-//        const val LAST_NAME_KEY = "lastName"
-//
-//        operator fun invoke(fistName: String, lastName: String): String = route.appendParams(
-//            FIST_NAME_KEY to fistName,
-//            LAST_NAME_KEY to lastName
-//        )
-//    }
 }
 
 internal fun String.appendParams(vararg params: Pair<String, Any?>): String {

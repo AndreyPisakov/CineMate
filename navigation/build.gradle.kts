@@ -1,12 +1,10 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kapt)
-    alias(libs.plugins.dagger.hilt)
 }
 
 android {
-    namespace = "com.pisakov.main_screen"
+    namespace = "com.pisakov.navigation"
     compileSdk = 34
 
     defaultConfig {
@@ -41,22 +39,13 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
-
-    implementation(libs.androidx.core)
-    implementation(libs.lifecycle.viewmodel.compose)
-
-    implementation(libs.dagger.hilt)
-    kapt(libs.dagger.hilt.compiler)
-    implementation(libs.dagger)
-    kapt(libs.dagger.compiler)
-
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.activity)
     implementation(libs.compose.ui)
     implementation(libs.compose.graphics)
-    implementation(libs.compose.toolingPreview)
-    implementation(libs.compose.material3)
+    implementation(libs.compose.material)
 
-    debugImplementation(libs.compose.tooling)
+    implementation(libs.javax.inject)
+
+    implementation(libs.navigation)
 }

@@ -55,6 +55,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":navigation"))
     implementation(project(":features:main-screen"))
     implementation(project(":features:search"))
     implementation(project(":features:favorite"))
@@ -62,11 +63,12 @@ dependencies {
 
     implementation(libs.androidx.core)
     implementation(libs.lifecycle.runtimeKtx)
+    implementation(libs.lifecycle.viewmodel.compose)
 
     implementation(libs.firebase.auth)
     implementation(libs.play.services.auth)
 
-    implementation(libs.navigation)
+    implementation(libs.firebase.database)
 
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
@@ -78,8 +80,8 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.graphics)
     implementation(libs.compose.toolingPreview)
-    implementation(libs.compose.material3)
     implementation(libs.compose.material)
+    implementation(libs.compose.material3)
 
     debugImplementation(libs.compose.tooling)
 }

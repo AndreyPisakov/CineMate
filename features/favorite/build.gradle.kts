@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kapt)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -24,12 +25,18 @@ android {
             )
         }
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.3"
+    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -37,6 +44,7 @@ dependencies {
     implementation(project(":domain"))
 
     implementation(libs.androidx.core)
+    implementation(libs.lifecycle.runtimeKtx)
     implementation(libs.lifecycle.viewmodel.compose)
 
     implementation(libs.dagger.hilt)
@@ -50,7 +58,6 @@ dependencies {
     implementation(libs.compose.graphics)
     implementation(libs.compose.toolingPreview)
     implementation(libs.compose.material3)
-    implementation(libs.compose.material)
 
     debugImplementation(libs.compose.tooling)
 }

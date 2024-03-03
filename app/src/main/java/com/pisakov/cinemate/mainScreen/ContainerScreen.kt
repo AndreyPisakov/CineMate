@@ -24,7 +24,7 @@ import com.pisakov.cinemate.navigation.SetupNavigation
 import com.pisakov.cinemate.ui.theme.CineMateTheme
 
 @Composable
-fun MainScreen(mainViewModel: MainViewModel = viewModel()) {
+fun ContainerScreen(mainViewModel: ContainerViewModel = viewModel()) {
     val navController = rememberNavController()
     SetupNavigation(
         navigationChannel = mainViewModel.navigationChannel,
@@ -60,24 +60,4 @@ fun MainScreen(mainViewModel: MainViewModel = viewModel()) {
             )
         }
     }
-}
-
-@Composable
-fun HomeScreen() {
-    Text(text = "HomeScreen")
-}
-
-@Composable
-fun UsersScreen() {
-    Text(text = "UsersScreen")
-}
-
-@Composable
-fun UserDetailsScreen() {
-    Text(text = "UserDetailsScreen")
-}
-
-@Composable
-fun MessagesScreen() {
-    Text(text = "MessagesScreen")
 }

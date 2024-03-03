@@ -17,3 +17,7 @@ rootProject.name = "CineMate"
 include(":app")
 include(":domain")
 include(":data")
+include(":features:main-screen")
+include(":features:search")
+include(":features:favorite")
+include(":features:profile")

@@ -10,10 +10,10 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.pisakov.cinemate.mainScreen.HomeScreen
-import com.pisakov.cinemate.mainScreen.MessagesScreen
-import com.pisakov.cinemate.mainScreen.UserDetailsScreen
-import com.pisakov.cinemate.mainScreen.UsersScreen
+import com.pisakov.favorite.FavoriteScreen
+import com.pisakov.main_screen.MainScreen
+import com.pisakov.profile.ProfileScreen
+import com.pisakov.search.SearchScreen
 
 @Composable
 fun NavigationHost(
@@ -23,12 +23,12 @@ fun NavigationHost(
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = Destination.HomeScreen.fullRoute
+        startDestination = Destination.MainScreen.fullRoute
     ) {
-        composable(destination = Destination.HomeScreen) { HomeScreen() }
-        composable(destination = Destination.SearchScreen) { UsersScreen() }
-        composable(destination = Destination.FavoriteScreen) { UserDetailsScreen() }
-        composable(destination = Destination.ProfileScreen) { MessagesScreen() }
+        composable(destination = Destination.MainScreen) { MainScreen() }
+        composable(destination = Destination.SearchScreen) { SearchScreen() }
+        composable(destination = Destination.FavoriteScreen) { FavoriteScreen() }
+        composable(destination = Destination.ProfileScreen) { ProfileScreen() }
     }
 }
 

@@ -14,16 +14,14 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.Firebase
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
-import com.pisakov.cinemate.mainScreen.MainScreen
+import com.pisakov.cinemate.mainScreen.ContainerScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            MainScreen()
-        }
+        setContent { ContainerScreen() }
     }
 
     private fun getClient(): GoogleSignInClient {

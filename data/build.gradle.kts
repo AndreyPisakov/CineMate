@@ -5,7 +5,7 @@ plugins {
     id("com.google.gms.google-services")
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.kapt)
 }
 
 android {
@@ -45,11 +45,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     android.buildFeatures.buildConfig = true
 }
@@ -61,7 +61,7 @@ dependencies {
     implementation(libs.appcompat)
 
     implementation(libs.dagger)
-    ksp(libs.dagger.compiler)
+    kapt(libs.dagger.compiler)
 
     implementation(libs.okhttp)
     implementation(libs.retrofit.lib)

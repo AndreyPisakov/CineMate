@@ -2,21 +2,26 @@
 core = "1.12.0"
 googleServices = "4.4.1"
 kotlin = "1.8.10"
-androidGradlePlugin = "8.2.2"
+androidGradlePlugin = "8.3.0"
 core-ktx = "1.12.0"
 appcompat = "1.6.1"
 androidx-lifecycle = "2.7.0"
 androidx-splash-screen = "1.0.1"
 coroutines = "1.7.3"
-dagger = "2.48"
 timber = "5.0.1"
-ksp = "1.5.30-1.0.0"
 javax-inject = "1"
 
+#Di
+dagger = "2.48"
+dagger-hilt = "2.44"
+
 #sdk
-minSdk = "23"
+minSdk = "24"
 compileSdk = "34"
 targetSdk = "33"
+
+#navigation
+navigation = "2.7.7"
 
 #network
 retrofit = "2.9.0"
@@ -24,8 +29,8 @@ okhttp = "4.10.0"
 gson = "2.10.1"
 
 #compose
-compose-bom = "2024.02.00"
-compose-compiler = "1.5.9"
+compose-bom = "2024.02.01"
+compose-compiler = "1.5.10"
 compose-accompanist-drawablepainter = "0.30.1"
 compose-activity = "1.8.2"
 
@@ -38,14 +43,17 @@ test-junit5 = "5.9.3"
 test-mockk = "1.13.8"
 test-robolectric = "4.10.3"
 
-firebase-database = "20.3.0"
+firebase-database = "20.3.1"
+firebase-auth = "22.3.1"
+playServicesAuth = "21.0.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 androidLibrary = { id = "com.android.library", version.ref = "androidGradlePlugin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger-hilt" }
 
 [libraries]
 #androidx
@@ -75,9 +83,11 @@ lifecycle-liveDataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", 
 lifecycle-streams = { module = "androidx.lifecycle:lifecycle-reactivestreams", version.ref = "androidx-lifecycle" }
 lifecycle-common = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "androidx-lifecycle" }
 
-#dagger
+#DI
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "dagger-hilt" }
+dagger-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "dagger-hilt" }
 
 #coroutines
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
@@ -98,7 +108,8 @@ compose-foundationLayout = { module = "androidx.compose.foundation:foundation-la
 compose-geometry = { module = "androidx.compose.ui:ui-geometry" }
 compose-graphics = { module = "androidx.compose.ui:ui-graphics" }
 compose-livedata = { module = "androidx.compose.runtime:runtime-livedata" }
-compose-material3 = { module = "androidx.compose.material3:material3" }
+compose-material3 = { module = "androidx.compose.material3:material3-android" }
+compose-material = { module = "androidx.compose.material:material" }
 compose-materialIconsCore = { module = "androidx.compose.material:material-icons-core" }
 compose-materialIconsExtended = { module = "androidx.compose.material:material-icons-extended" }
 compose-viewBinding = { module = "androidx.compose.ui:ui-viewbinding" }
@@ -127,3 +138,8 @@ androidx-splashScreen = { module = "androidx.core:core-splashscreen", version.re
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebase-database" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebase-auth" }
+play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
+
+#navigation
+navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }

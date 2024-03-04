@@ -55,6 +55,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":auth"))
     implementation(project(":navigation"))
     implementation(project(":features:main-screen"))
     implementation(project(":features:search"))
@@ -65,8 +66,8 @@ dependencies {
     implementation(libs.lifecycle.runtimeKtx)
     implementation(libs.lifecycle.viewmodel.compose)
 
-    implementation(libs.firebase.auth)
     implementation(libs.play.services.auth)
+    implementation(libs.firebase.auth)
 
     implementation(libs.firebase.database)
 

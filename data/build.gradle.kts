@@ -66,8 +66,11 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.retrofit.lib)
     implementation(libs.retrofit.gsonConverter)
+    implementation(libs.okhttp.logInterceptor)
 
     implementation(libs.coroutines.core)
 
     implementation(libs.firebase.database)
+
+    implementation(libs.timber)
 }

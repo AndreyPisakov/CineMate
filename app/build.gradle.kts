@@ -2,7 +2,6 @@ plugins {
     id("com.google.gms.google-services")
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.kapt)
 }
 
@@ -66,13 +65,13 @@ dependencies {
     implementation(libs.lifecycle.runtimeKtx)
     implementation(libs.lifecycle.viewmodel.compose)
 
+    implementation(libs.navigation)
+
     implementation(libs.play.services.auth)
     implementation(libs.firebase.auth)
 
     implementation(libs.firebase.database)
 
-    implementation(libs.dagger.hilt)
-    kapt(libs.dagger.hilt.compiler)
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 
@@ -85,4 +84,6 @@ dependencies {
     implementation(libs.compose.material3)
 
     debugImplementation(libs.compose.tooling)
+
+    implementation(libs.timber)
 }

@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import javax.inject.Inject
 
-class SessionRepositoryImpl @Inject constructor(
+internal class SessionRepositoryImpl @Inject constructor(
     private val database: FirebaseDatabase
 ) : SessionRepository {
 

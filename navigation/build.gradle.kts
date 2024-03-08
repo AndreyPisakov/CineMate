@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kapt)
 }
 
 android {
@@ -39,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.activity)
     implementation(libs.compose.ui)
@@ -48,4 +51,7 @@ dependencies {
     implementation(libs.javax.inject)
 
     implementation(libs.navigation)
+
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 }

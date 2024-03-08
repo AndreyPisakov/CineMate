@@ -6,11 +6,14 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.pisakov.cinemate.Destination
+import com.pisakov.navigation.FavoriteScreenDestination
+import com.pisakov.navigation.MainScreenDestination
+import com.pisakov.navigation.ProfileScreenDestination
+import com.pisakov.navigation.SearchScreenDestination
 
 enum class BottomNavigationItems(val title: String, val icon: ImageVector, val route: String) {
-    MAIN(title = "Главная", icon = Icons.Default.Home, route = Destination.MainScreen.route),
-    SEARCH(title = "Поиск", icon = Icons.Default.Search, route = Destination.SearchScreen.route),
-    FAVORITE(title = "Избранное", icon = Icons.Default.Favorite, route = Destination.FavoriteScreen.route),
-    PROFILE(title = "Профиль", icon = Icons.Default.Person, route = Destination.ProfileScreen.route)
+    MAIN(title = "Главная", icon = Icons.Default.Home, route = MainScreenDestination.route),
+    SEARCH(title = "Поиск", icon = Icons.Default.Search, route = SearchScreenDestination.route),
+    FAVORITE(title = "Избранное", icon = Icons.Default.Favorite, route = FavoriteScreenDestination.route),
+    PROFILE(title = "Профиль", icon = Icons.Default.Person, route = ProfileScreenDestination.route)
 }

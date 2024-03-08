@@ -7,9 +7,8 @@ internal data class KinopoiskCollectionsDto(
 )
 
 internal data class KinopoiskCollectionDto(
-    @SerializedName("slug") val slug: String,
+    @SerializedName("slug") val slug: String?,
     @SerializedName("name") val name: String,
-    @SerializedName("cover") val image: KinopoiskImageDto,
-    @SerializedName("category") val category: String,
-    @SerializedName("moviesCount") val moviesCount: Int
+    @SerializedName("cover") val image: KinopoiskImageDto?,
+    @SerializedName("moviesCount") val moviesCount: Int?
 )

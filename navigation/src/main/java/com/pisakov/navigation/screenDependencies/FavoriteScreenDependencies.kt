@@ -1,8 +1,8 @@
-package com.pisakov.favorite
+package com.pisakov.navigation.screenDependencies
 
 import com.pisakov.domain.usecase.GetMatchesUseCase
 
-interface FavoriteDependencies {
+interface FavoriteScreenDependencies {
 
     fun getMatchesUseCase(): GetMatchesUseCase
 }

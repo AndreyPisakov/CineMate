@@ -9,7 +9,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
 @Composable
-fun SetupNavigation(
+internal fun SetupNavigation(
     navigationChannel: Channel<NavigationIntent>,
     navController: NavController
 ) {

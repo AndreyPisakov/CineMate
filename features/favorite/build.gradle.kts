@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kapt)
-    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -42,13 +41,12 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":navigation"))
 
     implementation(libs.androidx.core)
     implementation(libs.lifecycle.runtimeKtx)
     implementation(libs.lifecycle.viewmodel.compose)
 
-    implementation(libs.dagger.hilt)
-    kapt(libs.dagger.hilt.compiler)
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 

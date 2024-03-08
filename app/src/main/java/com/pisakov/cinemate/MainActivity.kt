@@ -5,14 +5,29 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.pisakov.auth.GoogleAuth
 import com.pisakov.cinemate.containerScreen.ContainerScreen
-import dagger.hilt.android.AndroidEntryPoint
+import com.pisakov.cinemate.containerScreen.daggerViewModel
+import com.pisakov.cinemate.di.AllModulesDependencies
+import com.pisakov.cinemate.di.DaggerAppComponent
+import com.pisakov.data.di.DaggerDataComponent
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var allModulesDependencies: AllModulesDependencies
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { ContainerScreen() }
+        val dataComponent = DaggerDataComponent.factory().create()
+        val appComponent = DaggerAppComponent.factory().create(dataComponent.provideRepositories()).apply {
+            inject(this@MainActivity)
+        }
+        setContent {
+            ContainerScreen(
+                allModulesDependencies,
+                daggerViewModel { appComponent.getContainerScreenViewModel() }
+            )
+        }
         signIn()
     }
 

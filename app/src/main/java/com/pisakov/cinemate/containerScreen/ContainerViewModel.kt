@@ -1,48 +1,47 @@
 package com.pisakov.cinemate.containerScreen
 
 import androidx.lifecycle.ViewModel
-import com.pisakov.cinemate.Destination
-import com.pisakov.favorite.FavoriteDependencies
 import com.pisakov.navigation.AppRouter
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.pisakov.navigation.FavoriteScreenDestination
+import com.pisakov.navigation.MainScreenDestination
+import com.pisakov.navigation.ProfileScreenDestination
+import com.pisakov.navigation.SearchScreenDestination
 import javax.inject.Inject
 
-@HiltViewModel
 class ContainerViewModel @Inject constructor(
-    private val appRouter: AppRouter,
-    private val favoriteDependencies: FavoriteDependencies
+    private val appRouter: AppRouter
 ) : ViewModel() {
 
     val navigationChannel = appRouter.navigationChannel
 
     fun navigateToMainScreen() {
         appRouter.tryNavigateTo(
-            route = Destination.MainScreen(),
-            popUpToRoute = Destination.MainScreen.route,
+            route = MainScreenDestination(),
+            popUpToRoute = MainScreenDestination.route,
             isSingleTop = true
         )
     }
 
     fun navigateToSearchScreen() {
         appRouter.tryNavigateTo(
-            route = Destination.SearchScreen(),
-            popUpToRoute = Destination.SearchScreen.route,
+            route = SearchScreenDestination(),
+            popUpToRoute = SearchScreenDestination.route,
             isSingleTop = true
         )
     }
 
     fun navigateToFavoriteScreen() {
         appRouter.tryNavigateTo(
-            route = Destination.FavoriteScreen(favoriteDependencies),
-            popUpToRoute = Destination.FavoriteScreen.route,
+            route = FavoriteScreenDestination(),
+            popUpToRoute = FavoriteScreenDestination.route,
             isSingleTop = true
         )
     }
 
     fun navigateToProfileScreen() {
         appRouter.tryNavigateTo(
-            route = Destination.ProfileScreen(),
-            popUpToRoute = Destination.ProfileScreen.route,
+            route = ProfileScreenDestination(),
+            popUpToRoute = ProfileScreenDestination.route,
             isSingleTop = true
         )
     }

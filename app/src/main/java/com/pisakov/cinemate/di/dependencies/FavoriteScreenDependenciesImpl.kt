@@ -1,12 +1,12 @@
-package com.pisakov.cinemate
+package com.pisakov.cinemate.di.dependencies
 
 import com.pisakov.domain.usecase.GetMatchesUseCase
-import com.pisakov.favorite.FavoriteDependencies
+import com.pisakov.navigation.screenDependencies.FavoriteScreenDependencies
 import javax.inject.Inject
 
-class FavoriteDependenciesImpl @Inject constructor(
+class FavoriteScreenDependenciesImpl @Inject constructor(
     private val getMatchesUseCase: GetMatchesUseCase
-) : FavoriteDependencies {
+) : FavoriteScreenDependencies {
 
     override fun getMatchesUseCase(): GetMatchesUseCase = getMatchesUseCase
 }

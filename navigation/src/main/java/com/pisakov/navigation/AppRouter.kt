@@ -1,6 +1,5 @@
 package com.pisakov.navigation
 
-
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
 import javax.inject.Inject

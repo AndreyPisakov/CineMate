@@ -13,19 +13,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.pisakov.cinemate.Destination
+import com.pisakov.cinemate.di.AllModulesDependencies
 import com.pisakov.cinemate.ui.theme.CineMateTheme
-import com.pisakov.favorite.FavoriteScreen
-import com.pisakov.main_screen.MainScreen
-import com.pisakov.navigation.ComposableModel
-import com.pisakov.navigation.NavigationHost
 import com.pisakov.navigation.bottomNavigationItemIsSelected
-import com.pisakov.profile.ProfileScreen
-import com.pisakov.search.SearchScreen
 
 @Composable
-fun ContainerScreen(mainViewModel: ContainerViewModel = viewModel()) {
+fun ContainerScreen(
+    allModulesDependencies: AllModulesDependencies,
+    containerViewModel: ContainerViewModel
+) {
     CineMateTheme {
         Scaffold(
             bottomBar = {
@@ -43,10 +39,10 @@ fun ContainerScreen(mainViewModel: ContainerViewModel = viewModel()) {
                                 unselectedContentColor = Color.Gray,
                                 onClick = {
                                     when (it.route) {
-                                        BottomNavigationItems.MAIN.route -> mainViewModel.navigateToMainScreen()
-                                        BottomNavigationItems.SEARCH.route -> mainViewModel.navigateToSearchScreen()
-                                        BottomNavigationItems.FAVORITE.route -> mainViewModel.navigateToFavoriteScreen()
-                                        BottomNavigationItems.PROFILE.route -> mainViewModel.navigateToProfileScreen()
+                                        BottomNavigationItems.MAIN.route -> containerViewModel.navigateToMainScreen()
+                                        BottomNavigationItems.SEARCH.route -> containerViewModel.navigateToSearchScreen()
+                                        BottomNavigationItems.FAVORITE.route -> containerViewModel.navigateToFavoriteScreen()
+                                        BottomNavigationItems.PROFILE.route -> containerViewModel.navigateToProfileScreen()
                                     }
                                 }
                             )
@@ -57,15 +53,10 @@ fun ContainerScreen(mainViewModel: ContainerViewModel = viewModel()) {
         ) { innerPadding ->
             NavigationHost(
                 modifier = Modifier.padding(innerPadding),
-                startDestination = Destination.MainScreen.fullRoute,
-                navigationChannel = mainViewModel.navigationChannel,
-                composableModels = listOf(
-                    ComposableModel(destination = Destination.MainScreen.fullRoute) { MainScreen() },
-                    ComposableModel(destination = Destination.SearchScreen.fullRoute) { SearchScreen() },
-                    ComposableModel(destination = Destination.FavoriteScreen.fullRoute) { FavoriteScreen() },
-                    ComposableModel(destination = Destination.ProfileScreen.fullRoute) { ProfileScreen() }
-                )
+                navigationChannel = containerViewModel.navigationChannel,
+                allModulesDependencies = allModulesDependencies
             )
         }
     }
 }
+

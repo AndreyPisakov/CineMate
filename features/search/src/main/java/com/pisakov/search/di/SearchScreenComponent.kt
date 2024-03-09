@@ -1,6 +1,6 @@
-package com.pisakov.search
+package com.pisakov.search.di
 
-import com.pisakov.navigation.screenDependencies.SearchScreenDependencies
+import com.pisakov.search.SearchScreenViewModel
 import dagger.Component
 import javax.inject.Singleton
 

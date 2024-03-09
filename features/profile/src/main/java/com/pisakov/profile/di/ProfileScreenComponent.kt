@@ -1,6 +1,6 @@
-package com.pisakov.profile
+package com.pisakov.profile.di
 
-import com.pisakov.navigation.screenDependencies.ProfileScreenDependencies
+import com.pisakov.profile.ProfileScreenViewModel
 import dagger.Component
 import javax.inject.Singleton
 

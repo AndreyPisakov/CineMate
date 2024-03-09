@@ -3,7 +3,6 @@ package com.pisakov.main_screen.di
 import com.pisakov.main_screen.createSessionScreen.CreateSessionScreenViewModel
 import com.pisakov.main_screen.joinToSessionScreen.JoinToSessionScreenViewModel
 import com.pisakov.main_screen.mainScreen.MainScreenViewModel
-import com.pisakov.navigation.screenDependencies.MainScreenDependencies
 import dagger.Component
 import javax.inject.Singleton
 

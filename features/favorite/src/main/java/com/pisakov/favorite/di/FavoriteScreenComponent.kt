@@ -1,6 +1,6 @@
-package com.pisakov.favorite
+package com.pisakov.favorite.di
 
-import com.pisakov.navigation.screenDependencies.FavoriteScreenDependencies
+import com.pisakov.favorite.FavoriteScreenViewModel
 import dagger.Component
 import javax.inject.Singleton
 

@@ -1,9 +1,9 @@
 package com.pisakov.cinemate.di
 
-import com.pisakov.navigation.screenDependencies.FavoriteScreenDependencies
-import com.pisakov.navigation.screenDependencies.MainScreenDependencies
-import com.pisakov.navigation.screenDependencies.ProfileScreenDependencies
-import com.pisakov.navigation.screenDependencies.SearchScreenDependencies
+import com.pisakov.favorite.di.FavoriteScreenDependencies
+import com.pisakov.main_screen.di.MainScreenDependencies
+import com.pisakov.profile.di.ProfileScreenDependencies
+import com.pisakov.search.di.SearchScreenDependencies
 import javax.inject.Inject
 
 class AllModulesDependencies @Inject constructor(

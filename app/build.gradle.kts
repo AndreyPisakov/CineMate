@@ -56,6 +56,8 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":auth"))
     implementation(project(":navigation"))
+    implementation(project(":core:core"))
+    implementation(project(":core:compose"))
     implementation(project(":features:main-screen"))
     implementation(project(":features:search"))
     implementation(project(":features:favorite"))

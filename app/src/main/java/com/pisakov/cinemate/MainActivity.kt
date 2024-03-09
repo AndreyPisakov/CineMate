@@ -5,9 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.pisakov.auth.GoogleAuth
 import com.pisakov.cinemate.containerScreen.ContainerScreen
-import com.pisakov.cinemate.containerScreen.daggerViewModel
 import com.pisakov.cinemate.di.AllModulesDependencies
 import com.pisakov.cinemate.di.DaggerAppComponent
+import com.pisakov.core.compose.composeViewModel
 import com.pisakov.data.di.DaggerDataComponent
 import javax.inject.Inject
 
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ContainerScreen(
                 allModulesDependencies,
-                daggerViewModel { appComponent.getContainerScreenViewModel() }
+                composeViewModel { appComponent.getContainerScreenViewModel() }
             )
         }
         signIn()

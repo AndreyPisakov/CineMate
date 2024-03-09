@@ -1,9 +1,9 @@
 package com.pisakov.main_screen.mainScreen
 
 import androidx.lifecycle.ViewModel
+import com.pisakov.main_screen.di.MainScreenDependencies
 import com.pisakov.navigation.CreateSessionDestination
 import com.pisakov.navigation.JoinToSessionDestination
-import com.pisakov.navigation.screenDependencies.MainScreenDependencies
 import javax.inject.Inject
 
 class MainScreenViewModel @Inject constructor(

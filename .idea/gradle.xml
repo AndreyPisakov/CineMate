@@ -11,9 +11,13 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/auth" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/compose" />
+            <option value="$PROJECT_DIR$/core/core" />
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/createSessionScreen" />
             <option value="$PROJECT_DIR$/features/favorite" />
             <option value="$PROJECT_DIR$/features/main-screen" />
             <option value="$PROJECT_DIR$/features/profile" />

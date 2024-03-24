@@ -32,6 +32,7 @@ compose-bom = "2024.02.01"
 compose-compiler = "1.5.10"
 compose-accompanist-drawablepainter = "0.30.1"
 compose-activity = "1.8.2"
+compose-coil = "2.4.0"
 
 #test
 test-core = "2.2.0"
@@ -46,6 +47,9 @@ firebase-database = "20.3.1"
 firebase-auth = "22.3.1"
 playServicesAuth = "21.0.0"
 lifecycleViewmodelCompose = "2.7.0"
+junit = "1.1.5"
+espressoCore = "3.5.1"
+material = "1.11.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -94,6 +98,7 @@ coroutines-rx = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2", versi
 
 #compose
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+compose-coil = { module = "io.coil-kt:coil-compose", version.ref = "compose-coil" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-text = { module = "androidx.compose.ui:ui-text" }
 compose-util = { module = "androidx.compose.ui:ui-util" }
@@ -141,3 +146,6 @@ play-services-auth = { group = "com.google.android.gms", name = "play-services-a
 
 #navigation
 navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }

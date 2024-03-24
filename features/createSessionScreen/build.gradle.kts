@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.pisakov.main_screen"
+    namespace = "com.pisakov.createSessionScreen"
     compileSdk = 34
 
     defaultConfig {
@@ -43,7 +43,6 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":navigation"))
     implementation(project(":auth"))
-    implementation(project(":features:createSessionScreen"))
     implementation(project(":core:core"))
 
     implementation(libs.androidx.core)

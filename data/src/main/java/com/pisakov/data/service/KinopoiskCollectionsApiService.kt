@@ -10,7 +10,7 @@ internal interface KinopoiskCollectionsApiService {
     suspend fun getMovieCollections(
         @Query("page") page: Int = 1,
         @Query("limit") limit: Int = 250,
-        @Query("selectFields") selectFields: List<String> = listOf("name", "cover", "moviesCount"),
-        @Query("notNullFields") notNullFields: List<String> = listOf("name", "moviesCount", "cover.url"),
+        @Query("selectFields") selectFields: List<String> = listOf("name", "slug", "cover", "moviesCount"),
+        @Query("notNullFields") notNullFields: List<String> = listOf("name", "slug", "moviesCount", "cover.url"),
     ): KinopoiskCollectionsDto
 }

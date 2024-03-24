@@ -8,5 +8,5 @@ class GetMoviesFromCollectionUseCase @Inject constructor(
     private val repository: MoviesRepository
 ) {
 
-    suspend fun invoke(collection: String): Result<List<MovieModel>> = repository.getMoviesFromCollection(collection)
+    suspend fun invoke(collections: List<String>): Result<List<MovieModel>> = repository.getMoviesFromCollection(collections)
 }

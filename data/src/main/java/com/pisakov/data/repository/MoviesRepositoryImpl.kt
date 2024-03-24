@@ -52,11 +52,9 @@ internal class MoviesRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getMoviesFromCollection(collection: String): Result<List<MovieModel>> {
+    override suspend fun getMoviesFromCollection(collections: List<String>): Result<List<MovieModel>> {
         return runCatching {
-            apiService.getMoviesFromCollection(
-                collection = listOf(collection)
-            ).movies.map(::mapToMovieModel)
+            apiService.getMoviesFromCollection(collections = collections).movies.map(::mapToMovieModel)
         }
     }
 

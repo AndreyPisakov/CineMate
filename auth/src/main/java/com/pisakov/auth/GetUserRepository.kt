@@ -7,10 +7,10 @@ class GetUserRepository @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) {
 
-    fun invoke(): User {
+    fun getUser(): User {
         val user = firebaseAuth.currentUser ?: throw NoCurrentUserException()
         return User(
-            name = user.displayName,
+            name = user.displayName ?: user.uid,
             photoUrl = user.photoUrl.toString(),
             uid = user.uid
         )
@@ -18,7 +18,7 @@ class GetUserRepository @Inject constructor(
 }
 
 data class User(
-    val name: String?,
+    val name: String,
     val photoUrl: String?,
     val uid: String
 )

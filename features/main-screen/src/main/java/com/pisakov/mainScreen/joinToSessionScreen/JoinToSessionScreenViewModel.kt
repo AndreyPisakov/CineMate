@@ -1,4 +1,4 @@
-package com.pisakov.main_screen.joinToSessionScreen
+package com.pisakov.mainScreen.joinToSessionScreen
 
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject

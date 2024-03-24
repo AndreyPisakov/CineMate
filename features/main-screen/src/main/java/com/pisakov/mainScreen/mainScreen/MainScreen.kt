@@ -1,4 +1,4 @@
-package com.pisakov.main_screen.mainScreen
+package com.pisakov.mainScreen.mainScreen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

@@ -41,7 +41,7 @@ internal data class KinopoiskGenreDto(
 )
 
 internal data class KinopoiskImageDto(
-    @SerializedName("url") val url: String?
+    @SerializedName("url") val url: String
 )
 
 internal data class KinopoiskVideosTypeDto(

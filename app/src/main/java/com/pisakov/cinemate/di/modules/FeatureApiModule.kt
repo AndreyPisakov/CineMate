@@ -1,10 +1,28 @@
 package com.pisakov.cinemate.di.modules
 
+import com.pisakov.createSessionScreen.api.CreateSessionScreenApi
+import com.pisakov.createSessionScreen.api.CreateSessionScreenImpl
+import com.pisakov.navigation.AppRouter
+import dagger.Binds
 import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 interface FeatureApiModule {
 
+    @Binds
+    @Singleton
+    fun bindCreateSessionScreenApi(impl: CreateSessionScreenImpl): CreateSessionScreenApi
+
+    companion object {
+
+        @Provides
+        @Singleton
+        fun provideCreateSessionScreenImpl(appRouter: AppRouter): CreateSessionScreenImpl {
+            return CreateSessionScreenImpl(appRouter)
+        }
+    }
 }
 
 object FeatureApiInjectConstants {

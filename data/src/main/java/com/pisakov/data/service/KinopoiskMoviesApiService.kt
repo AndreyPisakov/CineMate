@@ -25,7 +25,7 @@ internal interface KinopoiskMoviesApiService {
     suspend fun getMoviesFromCollection(
         @Query("page") page: Int = 1,
         @Query("limit") limit: Int = 500,
-        @Query("lists") collection: List<String>
+        @Query("lists") collections: List<String>
     ): KinopoiskMoviesDto
 
     @GET("/v1.4/movie/search")

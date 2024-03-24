@@ -5,6 +5,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.pisakov.domain.model.MatchModel
+import com.pisakov.domain.model.MovieModel
 import com.pisakov.domain.model.SessionKey
 import com.pisakov.domain.repository.SessionRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -21,13 +22,13 @@ internal class SessionRepositoryImpl @Inject constructor(
     private val matches = mutableListOf<MatchModel>()
     private val usersLikes = mutableMapOf<String, MutableList<Int>>()
 
-    override fun createSession(userName: String, moviesId: List<Int>): Result<SessionKey> {
+    override fun createSession(userName: String, userId: String, movies: List<MovieModel>): Result<SessionKey> {
         return runCatching {
-            createSessionKey().also {sessionKey ->
+            createSessionKey(userId).also {sessionKey ->
                 this@SessionRepositoryImpl.sessionKey = sessionKey
                 observeUsersLikes(sessionKey)
                 database.getReference(sessionKey.key).child(USERS).setValue(userName)
-                database.getReference(sessionKey.key).child(MOVIES).setValue(moviesId)
+                database.getReference(sessionKey.key).child(MOVIES).setValue(movies)
             }
         }
     }
@@ -48,7 +49,6 @@ internal class SessionRepositoryImpl @Inject constructor(
                             runCatching { snapshot.children.last().value as MatchModel }
                         )
                     }
-
                     override fun onCancelled(error: DatabaseError) {
                         matchesFlow.tryEmit(Result.failure(error.toException().cause ?: Throwable()))
                     }
@@ -66,8 +66,10 @@ internal class SessionRepositoryImpl @Inject constructor(
         }
     }
 
-    private fun createSessionKey(): SessionKey {
-        TODO()
+    private fun createSessionKey(userId: String): SessionKey {
+        return SessionKey(
+            key = "$userId${ database.getReference(userId).get().result.childrenCount * 99 + 564 }"
+        )
     }
 
     private fun observeUsersLikes(sessionKey: SessionKey) {

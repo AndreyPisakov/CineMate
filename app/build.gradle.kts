@@ -62,6 +62,7 @@ dependencies {
     implementation(project(":features:search"))
     implementation(project(":features:favorite"))
     implementation(project(":features:profile"))
+    implementation(project(":features:createSessionScreen"))
 
     implementation(libs.androidx.core)
     implementation(libs.lifecycle.runtimeKtx)

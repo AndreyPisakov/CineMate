@@ -1,12 +1,12 @@
 package com.pisakov.core
 
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharedFlow
 
 interface BaseFeatureApi<ARGS, RESULT> {
 
-    val featureResult: Flow<BaseFeatureResult<RESULT>>
-
     fun execute(args: ARGS)
+
+    val featureResult: SharedFlow<BaseFeatureResult<RESULT>>
 }
 
 sealed interface BaseFeatureResult<out T> {

@@ -1,8 +1,7 @@
-package com.pisakov.main_screen.di
+package com.pisakov.mainScreen.di
 
-import com.pisakov.main_screen.createSessionScreen.CreateSessionScreenViewModel
-import com.pisakov.main_screen.joinToSessionScreen.JoinToSessionScreenViewModel
-import com.pisakov.main_screen.mainScreen.MainScreenViewModel
+import com.pisakov.mainScreen.joinToSessionScreen.JoinToSessionScreenViewModel
+import com.pisakov.mainScreen.mainScreen.MainScreenViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -11,8 +10,6 @@ import javax.inject.Singleton
 interface MainScreenComponent {
 
     fun getMainScreenViewModel(): MainScreenViewModel
-
-    fun getCreateSessionViewModel(): CreateSessionScreenViewModel
 
     fun getJoinToSessionScreenViewModel(): JoinToSessionScreenViewModel
 

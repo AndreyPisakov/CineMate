@@ -4,14 +4,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.pisakov.cinemate.di.AllModulesDependencies
 import com.pisakov.core.compose.composeViewModel
+import com.pisakov.createSessionScreen.CreateSessionScreen
+import com.pisakov.createSessionScreen.di.CreateSessionScreenComponent
+import com.pisakov.createSessionScreen.di.DaggerCreateSessionScreenComponent
 import com.pisakov.favorite.FavoriteScreen
 import com.pisakov.favorite.di.DaggerFavoriteScreenComponent
 import com.pisakov.favorite.di.FavoriteScreenComponent
-import com.pisakov.main_screen.createSessionScreen.CreateSessionScreen
-import com.pisakov.main_screen.di.DaggerMainScreenComponent
-import com.pisakov.main_screen.di.MainScreenComponent
-import com.pisakov.main_screen.joinToSessionScreen.JoinToSessionScreen
-import com.pisakov.main_screen.mainScreen.MainScreen
+import com.pisakov.mainScreen.di.DaggerMainScreenComponent
+import com.pisakov.mainScreen.di.MainScreenComponent
+import com.pisakov.mainScreen.joinToSessionScreen.JoinToSessionScreen
+import com.pisakov.mainScreen.mainScreen.MainScreen
 import com.pisakov.navigation.ComposableModel
 import com.pisakov.navigation.CreateSessionDestination
 import com.pisakov.navigation.FavoriteScreenDestination
@@ -51,6 +53,10 @@ fun NavigationHost(
         DaggerProfileScreenComponent.factory().create(allModulesDependencies.profileScreenDependencies)
     }
 
+    val createSearchScreenComponent: CreateSessionScreenComponent by lazy( mode = LazyThreadSafetyMode.NONE) {
+        DaggerCreateSessionScreenComponent.factory().create(allModulesDependencies.createSessionScreenDependencies)
+    }
+
     com.pisakov.navigation.NavigationHost(
         modifier = modifier,
         startDestination = MainScreenDestination.route,
@@ -69,7 +75,11 @@ fun NavigationHost(
                 ProfileScreen(composeViewModel { profileScreenComponent.getProfileScreenViewModel() })
             },
             ComposableModel(destination = CreateSessionDestination.route) {
-                CreateSessionScreen(composeViewModel { mainScreenComponent.getCreateSessionViewModel() })
+                CreateSessionScreen(
+                    createSessionScreenViewModel = composeViewModel { createSearchScreenComponent.getCreateSessionViewModel() },
+                    filtersScreenViewModel = composeViewModel { createSearchScreenComponent.getFiltersScreenViewModel() },
+                    collectionsScreenViewModel = composeViewModel { createSearchScreenComponent.getCollectionsScreenViewModel() },
+                )
             },
             ComposableModel(destination = JoinToSessionDestination.route) {
                 JoinToSessionScreen(composeViewModel { mainScreenComponent.getJoinToSessionScreenViewModel() })

@@ -15,7 +15,7 @@ interface MoviesRepository {
         genres: List<String>?
     ): Flow<MoviesResult>
 
-    suspend fun getMoviesFromCollection(collection: String): Result<List<MovieModel>>
+    suspend fun getMoviesFromCollection(collections: List<String>): Result<List<MovieModel>>
 
     suspend fun getMoviesBySearchQuery(searchQuery: String): Flow<MoviesResult>
 }

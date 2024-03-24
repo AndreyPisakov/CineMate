@@ -1,12 +1,13 @@
 package com.pisakov.domain.repository
 
 import com.pisakov.domain.model.MatchModel
+import com.pisakov.domain.model.MovieModel
 import com.pisakov.domain.model.SessionKey
 import kotlinx.coroutines.flow.SharedFlow
 
 interface SessionRepository {
 
-    fun createSession(userName: String, moviesId: List<Int>): Result<SessionKey>
+    fun createSession(userName: String, userId: String, movies: List<MovieModel>): Result<SessionKey>
 
     fun joinToSession(userName: String, sessionKey: SessionKey): Result<Unit>
 
